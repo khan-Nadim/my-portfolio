@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fafafa">
+    <meta name="description" content="Nadim khan | BSc CSE Student & Software Developer">
+    <title>Nadim khan | Personal Portfolio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: #2563eb;
+            color: white;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .profile-image {
+            aspect-ratio: 1 / 1;
+        }
+
+        .timeline-line {
+            border-left: 1px solid #e4e4e7;
+        }
+
+        .dark .timeline-line {
+            border-left-color: #27272a;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 7px;
+            height: 9px;
+            width: 9px;
+            border-radius: 50%;
+            background: #2563eb;
+        }
+
+        .dark .timeline-dot {
+            background: #3b82f6;
+        }
+
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #2563eb;
+        }
+
+        .dark .nav-link:hover {
+            color: #3b82f6;
+        }
+
+        .project-card {
+            transition: border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: #a1a1aa;
+        }
+
+        .dark .project-card:hover {
+            border-color: #52525b;
+        }
+
+        .resume-button {
+            background-color: #2563eb;
+            transition: background-color 0.2s ease;
+        }
+
+        .resume-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .dark .resume-button {
+            background-color: #3b82f6;
+        }
+
+        .dark .resume-button:hover {
+            background-color: #2563eb;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-200">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-zinc-200 dark:border-zinc-800">
+        <nav class="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+
+            <a href="#home" class="text-lg font-bold tracking-tight">
+                Nadim<span class="text-blue-600 dark:text-blue-500">.</span>
+            </a>
+
+            <div class="hidden sm:flex items-center gap-7 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Toggle dark mode"
+                    class="p-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                >
+                    <i data-lucide="moon" id="themeIcon" class="w-4 h-4"></i>
+                </button>
+
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium border border-zinc-200 dark:border-zinc-800 rounded-md px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
+                    Get in touch
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="max-w-5xl mx-auto px-5 sm:px-8">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="py-20 sm:py-28">
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-12 md:gap-16 items-center">
+
+                <div class="order-2 md:order-1">
+
+                    <div class="inline-flex items-center gap-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-1.5 mb-7">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-500"></span>
+                        <span class="mono text-xs text-zinc-600 dark:text-zinc-400">BSc CSE Student</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-5">
+                        Nadim khan<span class="text-blue-600 dark:text-blue-500">.</span>
+                    </h1>
+
+                    <h2 class="text-lg sm:text-xl font-semibold text-zinc-700 dark:text-zinc-300 mb-5">
+                        BSc CSE Student & Software Developer
+                    </h2>
+
+                    <p class="text-base sm:text-lg leading-8 text-zinc-500 dark:text-zinc-400 max-w-xl">
+                        Passionate about building scalable backend systems and exploring cybersecurity. I love solving complex algorithms and writing clean, highly optimized code.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mt-8">
+
+                        <a href="#projects" class="inline-flex items-center gap-2 rounded-md bg-zinc-900 dark:bg-zinc-50 text-white dark:text-zinc-900 px-5 py-3 text-sm font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors">
+                            View Projects
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </a>
+
+                        <a href="#contact" class="inline-flex items-center gap-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-5 py-3 text-sm font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                            Contact Me
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="flex items-center gap-5 mt-9">
+
+                        <a href="https://github.com/khan-Nadim" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+
+                        <a href="https://linkedin.com/in/Nadim%20Khan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+
+                        <a href="mailto:nadimkhan720083@gmail.com" aria-label="Email" class="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- PROFILE IMAGE -->
+                <div class="order-1 md:order-2 flex justify-center md:justify-end">
+                    <div class="w-52 sm:w-60 md:w-64">
+                        <img
+                            id="profileImage"
+                            src="https://drive.google.com/thumbnail?id=1JmDo7xWEb1L2l9R0bfy4VyqZQdktc9yF&sz=w800"
+                            data-drive-link="https://drive.google.com/file/d/1JmDo7xWEb1L2l9R0bfy4VyqZQdktc9yF/view?usp=sharing"
+                            alt="Nadim khan"
+                            class="profile-image w-full rounded-xl object-cover border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x800/f4f4f5/71717a?text=Nadim+Khan';"
+                        >
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-12 border-t border-zinc-200 dark:border-zinc-800">
+
+            <div class="mb-8">
+                <p class="mono text-xs text-blue-600 dark:text-blue-500 mb-3">01 / ABOUT</p>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">About Me</h2>
+            </div>
+
+            <div class="max-w-3xl">
+                <p class="text-zinc-600 dark:text-zinc-400 leading-8 text-base">
+                    Passionate about building scalable backend systems and exploring cybersecurity. I love solving complex algorithms and writing clean, highly optimized code.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="py-12 border-t border-zinc-200 dark:border-zinc-800">
+
+            <div class="mb-10">
+                <p class="mono text-xs text-blue-600 dark:text-blue-500 mb-3">02 / EDUCATION</p>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Education</h2>
+            </div>
+
+            <div class="ml-2 pl-7 timeline-line space-y-9">
+
+                <!-- SCHOOL -->
+                <div class="relative">
+                    <span class="timeline-dot"></span>
+
+                    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                            <span class="mono text-xs text-zinc-500 dark:text-zinc-400">SCHOOL</span>
+                        </div>
+
+                        <h3 class="text-lg font-semibold">Bhitabaria model secondary school</h3>
+                    </div>
+                </div>
+
+                <!-- COLLEGE -->
+                <div class="relative">
+                    <span class="timeline-dot"></span>
+
+                    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6">
+                        <div class="mb-3">
+                            <span class="mono text-xs text-zinc-500 dark:text-zinc-400">COLLEGE</span>
+                        </div>
+
+                        <h3 class="text-lg font-semibold">Kabi nazrul govt college,dhaka</h3>
+                    </div>
+                </div>
+
+                <!-- UNIVERSITY -->
+                <div class="relative">
+                    <span class="timeline-dot"></span>
+
+                    <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                            <span class="mono text-xs text-zinc-500 dark:text-zinc-400">UNIVERSITY</span>
+                            <span class="mono text-xs text-zinc-500 dark:text-zinc-400">2025</span>
+                        </div>
+
+                        <h3 class="text-lg font-semibold">Manarat International University</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-12 border-t border-zinc-200 dark:border-zinc-800">
+
+            <div class="mb-8">
+                <p class="mono text-xs text-blue-600 dark:text-blue-500 mb-3">03 / EXPERTISE</p>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Technical Skills</h2>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">C++</span>
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">Java</span>
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">Python</span>
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">Cybersecurity</span>
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">System Design</span>
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">Git</span>
+
+                <span class="rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 py-2 text-sm font-medium">Penetration Testing</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-12 border-t border-zinc-200 dark:border-zinc-800">
+
+            <div class="mb-10">
+                <p class="mono text-xs text-blue-600 dark:text-blue-500 mb-3">04 / SELECTED WORK</p>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Projects</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <!-- PROJECT 1 -->
+                <article class="project-card bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6">
+
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="w-11 h-11 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                            <i data-lucide="database" class="w-5 h-5 text-zinc-700 dark:text-zinc-300"></i>
+                        </div>
+
+                        <span class="mono text-xs text-zinc-500 dark:text-zinc-400">PROJECT 01</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        Student managemnt system
+                    </h3>
+
+                    <p class="text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+                        A RESTful backend architecture built with Node.js, Express, and MongoDB.
+                    </p>
+
+                    <div class="flex items-center gap-2 mt-7 text-xs text-zinc-500 dark:text-zinc-400 mono">
+                        <span>Backend</span>
+                        <span>·</span>
+                        <span>Database</span>
+                    </div>
+
+                </article>
+
+
+                <!-- PROJECT 2 -->
+                <article class="project-card bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6">
+
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="w-11 h-11 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-zinc-700 dark:text-zinc-300"></i>
+                        </div>
+
+                        <span class="mono text-xs text-zinc-500 dark:text-zinc-400">PROJECT 02</span>
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-3">
+                        log analayer
+                    </h3>
+
+                    <p class="text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+                        A custom Python-based tool for automating basic security checks and port scanning.
+                    </p>
+
+                    <div class="flex items-center gap-2 mt-7 text-xs text-zinc-500 dark:text-zinc-400 mono">
+                        <span>Python</span>
+                        <span>·</span>
+                        <span>Cybersecurity</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-16 border-t border-zinc-200 dark:border-zinc-800">
+
+            <div class="mb-9">
+                <p class="mono text-xs text-blue-600 dark:text-blue-500 mb-3">05 / CONTACT</p>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Get In Touch</h2>
+            </div>
+
+            <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 sm:p-8">
+
+                <div class="space-y-6">
+
+                    <!-- EMAIL -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                            <i data-lucide="mail" class="w-5 h-5 text-zinc-600 dark:text-zinc-300"></i>
+                        </div>
+
+                        <div class="min-w-0">
+                            <p class="text-xs mono text-zinc-500 dark:text-zinc-400 mb-1">EMAIL</p>
+                            <a href="mailto:nadimkhan720083@gmail.com" class="text-sm font-medium break-all hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                                nadimkhan720083@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- GITHUB -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                            <i data-lucide="github" class="w-5 h-5 text-zinc-600 dark:text-zinc-300"></i>
+                        </div>
+
+                        <div class="min-w-0">
+                            <p class="text-xs mono text-zinc-500 dark:text-zinc-400 mb-1">GITHUB</p>
+                            <a href="https://github.com/khan-Nadim" target="_blank" rel="noopener noreferrer" class="text-sm font-medium break-all hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                                github.com/khan-Nadim
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- LINKEDIN -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                            <i data-lucide="linkedin" class="w-5 h-5 text-zinc-600 dark:text-zinc-300"></i>
+                        </div>
+
+                        <div class="min-w-0">
+                            <p class="text-xs mono text-zinc-500 dark:text-zinc-400 mb-1">LINKEDIN</p>
+                            <a href="https://linkedin.com/in/Nadim%20Khan" target="_blank" rel="noopener noreferrer" class="text-sm font-medium break-all hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                                linkedin.com/in/Nadim Khan
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-8 pt-7 border-t border-zinc-200 dark:border-zinc-800">
+                    <a href="mailto:nadimkhan720083@gmail.com" class="resume-button inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Contact via Email
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="border-t border-zinc-200 dark:border-zinc-800">
+
+        <div class="max-w-5xl mx-auto px-5 sm:px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+                © <span id="currentYear"></span> Nadim khan
+            </p>
+
+            <div class="flex items-center gap-5">
+
+                <a href="https://github.com/khan-Nadim" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
+
+                <a href="https://linkedin.com/in/Nadim%20Khan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                </a>
+
+                <a href="mailto:nadimkhan720083@gmail.com" aria-label="Email" class="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-500 transition-colors">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // GOOGLE DRIVE PROFILE IMAGE
+        const profileImage = document.getElementById('profileImage');
+
+        if (profileImage) {
+            const driveLink = profileImage.dataset.driveLink;
+
+            const match = driveLink.match(/\/file\/d\/([^/]+)/);
+
+            if (match && match[1]) {
+                profileImage.src =
+                    `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`;
+            }
+        }
+
+
+        // DARK / LIGHT THEME
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        function updateThemeIcon() {
+            const isDark = htmlElement.classList.contains('dark');
+
+            themeIcon.setAttribute(
+                'data-lucide',
+                isDark ? 'sun' : 'moon'
+            );
+
+            lucide.createIcons();
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('portfolio-theme');
+
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add('dark');
+        } else if (savedTheme === 'light') {
+            htmlElement.classList.remove('dark');
+        }
+
+        updateThemeIcon();
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+
+            const isDark = htmlElement.classList.toggle('dark');
+
+            localStorage.setItem(
+                'portfolio-theme',
+                isDark ? 'dark' : 'light'
+            );
+
+            updateThemeIcon();
+        });
+
+
+        // CURRENT YEAR
+        document.getElementById('currentYear').textContent =
+            new Date().getFullYear();
+
+
+        // INITIALIZE LUCIDE ICONS
+        lucide.createIcons();
+
+    </script>
+
+</body>
+</html>
